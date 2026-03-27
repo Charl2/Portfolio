@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(identify \"/Users/charlestaylor/Desktop/Claude Apps/Brand_assets/My current portfolio/Picture of me.avif\")",
+      "Bash(open \"/Users/charlestaylor/Desktop/Claude Apps/portfolio/index.html\")",
+      "Bash(gh api:*)"
+    ]
+  }
+}
