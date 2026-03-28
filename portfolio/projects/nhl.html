@@ -63,11 +63,29 @@
     </div>
   </div>
 
-  <!-- Cover image -->
+  <!-- Cover video -->
   <div style="max-height:560px;overflow:hidden;">
-    <img src="../../Brand_assets/My current portfolio/NHL Page/First Picture.png"
-         alt="NHL XR Coaching App" style="width:100%;height:560px;object-fit:cover;display:block;" loading="lazy" />
+    <video id="cover-vid" autoplay muted playsinline onloadedmetadata="this.playbackRate=1.2"
+           style="width:100%;height:560px;object-fit:cover;display:block;">
+      <source src="../../Brand_assets/My current portfolio/NHL Page/Pres Clean NHL.mp4" type="video/mp4" />
+    </video>
   </div>
+  <script>
+    (function() {
+      var vid = document.getElementById('cover-vid');
+      var sources = [
+        '../../Brand_assets/My current portfolio/NHL Page/Pres Clean NHL.mp4',
+        '../../Brand_assets/My current portfolio/NHL Page/Immersiv mode - Clean.mp4'
+      ];
+      var current = 0;
+      vid.addEventListener('ended', function() {
+        current = (current + 1) % sources.length;
+        vid.src = sources[current];
+        vid.playbackRate = 1.2;
+        vid.play();
+      });
+    })();
+  </script>
 
   <!-- Stack badges -->
   <div style="padding:32px 40px;display:flex;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);max-width:1280px;margin:0 auto;">
@@ -141,7 +159,7 @@
       <div class="section-label">App Presentation</div>
       <h2 class="section-h2">Coaching App Walkthrough</h2>
       <div class="media-block reveal" style="margin-top:28px;">
-        <video data-autoplay muted loop playsinline controls>
+        <video data-autoplay muted loop playsinline controls onloadedmetadata="this.playbackRate=1.4">
           <source src="../../Brand_assets/My current portfolio/NHL Page/NHL Pres 2.mp4" type="video/mp4" />
         </video>
       </div>
