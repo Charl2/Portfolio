@@ -19,8 +19,8 @@
   });
 
   function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
+    ringX += (mouseX - ringX) * 0.22;
+    ringY += (mouseY - ringY) * 0.22;
     ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
     raf = requestAnimationFrame(animateRing);
   }
@@ -196,7 +196,7 @@
       const target = parseFloat(el.dataset.count);
       const suffix = el.dataset.suffix || '';
       const decimals = parseInt(el.dataset.decimals || '0', 10);
-      const duration = 1800;
+      const duration = 2500;
       const startTime = performance.now();
 
       function update(now) {
