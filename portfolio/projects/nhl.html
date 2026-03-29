@@ -142,7 +142,12 @@
         var coverHeight = coverWrap.offsetHeight;
         var walkthroughHeight = walkthrough ? walkthrough.offsetHeight : 0;
         var show = coverBottom < coverHeight * 0.5 && coverBottom < coverHeight && walkthroughTop > window.innerHeight - walkthroughHeight * 0.5;
-        pipVideo.style.display = show ? 'block' : 'none';
+        if (show && pipVideo.style.display !== 'block') {
+          pipVideo.style.display = 'block';
+          pipVid.play().catch(function(){});
+        } else if (!show) {
+          pipVideo.style.display = 'none';
+        }
       }, { passive: true });
     })();
   </script>
