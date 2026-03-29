@@ -7,6 +7,41 @@
   <link rel="stylesheet" href="../css/style.css" />
   <style>
     body { opacity: 0; }
+    #pipVideo {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 420px;
+      height: 236px;
+      z-index: 9999;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+      opacity: 1 !important;
+      isolation: isolate;
+      will-change: transform;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    #pipVideo:hover {
+      transform: scale(1.4) translate(-15%, -12%);
+      box-shadow: 0 20px 64px rgba(0,0,0,0.6);
+    }
+    #pipVideo video { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 1 !important; }
+    #pipClose {
+      position: absolute;
+      top: 6px; right: 6px;
+      width: 22px; height: 22px;
+      background: rgba(0,0,0,0.55);
+      border-radius: 50%;
+      border: none;
+      color: #fff;
+      font-size: 13px;
+      line-height: 22px;
+      text-align: center;
+      cursor: pointer;
+      z-index: 10000;
+    }
     .section-divider {
       display: flex; align-items: center; gap: 24px;
       padding: 48px 0 0;
@@ -64,26 +99,51 @@
   </div>
 
   <!-- Cover video -->
-  <div style="max-height:560px;overflow:hidden;">
+  <div id="coverWrap" style="max-height:560px;overflow:hidden;">
     <video id="cover-vid" autoplay muted playsinline onloadedmetadata="this.playbackRate=1.2"
            style="width:100%;height:560px;object-fit:cover;display:block;">
       <source src="../../Brand_assets/My current portfolio/NHL Page/Pres Clean NHL.mp4" type="video/mp4" />
     </video>
   </div>
+  <!-- PiP clone -->
+  <div id="pipVideo">
+    <button id="pipClose" onclick="document.getElementById('pipVideo').style.display='none';window._pipDismissed=true;">✕</button>
+    <video id="pipVid" autoplay muted playsinline></video>
+  </div>
   <script>
     (function() {
+      window._pipDismissed = false;
       var vid = document.getElementById('cover-vid');
+      var pipVideo = document.getElementById('pipVideo');
+      var pipVid = document.getElementById('pipVid');
       var sources = [
         '../../Brand_assets/My current portfolio/NHL Page/Pres Clean NHL.mp4',
         '../../Brand_assets/My current portfolio/NHL Page/Immersiv mode - Clean.mp4'
       ];
       var current = 0;
+
       vid.addEventListener('ended', function() {
         current = (current + 1) % sources.length;
         vid.src = sources[current];
         vid.playbackRate = 1.2;
         vid.play();
       });
+
+      pipVid.src = sources[0];
+      pipVid.playbackRate = 1.2;
+
+      var coverWrap = document.getElementById('coverWrap');
+
+      window.addEventListener('scroll', function() {
+        if (window._pipDismissed) return;
+        var walkthrough = document.getElementById('walkthroughVid');
+        var coverBottom = coverWrap.getBoundingClientRect().bottom;
+        var walkthroughTop = walkthrough ? walkthrough.getBoundingClientRect().top : 999999;
+        var coverHeight = coverWrap.offsetHeight;
+        var walkthroughHeight = walkthrough ? walkthrough.offsetHeight : 0;
+        var show = coverBottom < coverHeight * 0.5 && coverBottom < coverHeight && walkthroughTop > window.innerHeight - walkthroughHeight * 0.5;
+        pipVideo.style.display = show ? 'block' : 'none';
+      }, { passive: true });
     })();
   </script>
 
@@ -151,7 +211,7 @@
       <div class="section-label">App Presentation</div>
       <h2 class="section-h2">Coaching App Walkthrough</h2>
       <div class="media-block reveal" style="margin-top:28px;">
-        <video data-autoplay muted loop playsinline controls onloadedmetadata="this.playbackRate=1.4">
+        <video id="walkthroughVid" data-autoplay muted loop playsinline controls onloadedmetadata="this.playbackRate=1.4">
           <source src="../../Brand_assets/My current portfolio/NHL Page/NHL Pres 2.mp4" type="video/mp4" />
         </video>
       </div>
