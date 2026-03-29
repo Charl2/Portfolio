@@ -127,6 +127,9 @@
         vid.src = sources[current];
         vid.playbackRate = 1.2;
         vid.play();
+        pipVid.src = sources[current];
+        pipVid.playbackRate = 1.2;
+        pipVid.play().catch(function(){});
       });
 
       pipVid.src = sources[0];
