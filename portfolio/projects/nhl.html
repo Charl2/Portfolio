@@ -53,6 +53,50 @@
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--ink-light); white-space: nowrap;
     }
+    /* ── Decision Cards ── */
+    .decision-cards { display: flex; flex-direction: column; gap: 20px; }
+    .decision-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+    }
+    .decision-card-header {
+      display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px;
+    }
+    .decision-card-num {
+      font-family: var(--ff-display); font-size: 11px; font-weight: 700;
+      color: var(--blue); letter-spacing: 0.14em; flex-shrink: 0;
+    }
+    .decision-card-title {
+      font-family: var(--ff-display); font-size: 18px; font-weight: 700;
+      color: var(--ink); line-height: 1.3;
+    }
+    .decision-cols {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line); padding-top: 22px;
+    }
+    .decision-col { padding-right: 28px; }
+    .decision-col + .decision-col { padding-left: 28px; padding-right: 28px; border-left: 1px solid var(--line); }
+    .decision-col:last-child { padding-right: 0; }
+    .decision-col-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 10px;
+    }
+    .decision-col p { font-size: 14px; color: var(--ink-mid); line-height: 1.65; margin: 0; }
+    .decision-result-tag {
+      display: inline-block; margin-top: 12px; padding: 5px 13px;
+      background: rgba(0,90,255,0.08); color: var(--blue); border-radius: 100px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.03em;
+    }
+    @media (max-width: 768px) {
+      .decision-card { padding: 22px 20px; }
+      .decision-cols { grid-template-columns: 1fr; }
+      .decision-col { padding: 0 0 18px; border-left: none !important; }
+      .decision-col + .decision-col { padding-left: 0; border-top: 1px solid var(--line); padding-top: 18px; }
+      .decision-col:last-child { padding-bottom: 0; }
+    }
   </style>
 </head>
 <body>
@@ -160,7 +204,7 @@
   <!-- Key numbers -->
   <div class="project-section">
     <div class="container">
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;" class="reveal">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;" class="reveal">
         <div style="padding:36px;background:var(--blue);border-radius:var(--radius-lg);color:var(--white);text-align:center;">
           <div style="font-family:var(--ff-display);font-size:52px;font-weight:900;margin-bottom:6px;line-height:1;" data-count="1.4" data-suffix="M$" data-decimals="1">1.4M$</div>
           <div style="font-size:14px;opacity:0.8;">Total contract value</div>
@@ -168,6 +212,10 @@
         <div style="padding:36px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--line);text-align:center;">
           <div style="font-family:var(--ff-display);font-size:52px;font-weight:900;color:var(--blue);margin-bottom:6px;line-height:1;" data-count="12" data-suffix="">12</div>
           <div style="font-size:14px;color:var(--ink-mid);">Teams using the coaching app</div>
+        </div>
+        <div style="padding:36px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--line);text-align:center;">
+          <div style="font-family:var(--ff-display);font-size:52px;font-weight:900;color:var(--blue);margin-bottom:6px;line-height:1;" data-count="2" data-suffix="">2</div>
+          <div style="font-size:14px;color:var(--ink-mid);">Fan testing sessions — US &amp; Canada</div>
         </div>
       </div>
     </div>
@@ -192,10 +240,10 @@
           <h2 class="section-h2">Product Manager &amp; Contract Owner</h2>
           <div class="section-body">
             <p>
-              I joined as Product Manager with the primary objective of renewing the NHL contract — Immersiv.io's largest client relationship at the time. Assigned to the XR Coaching App on Apple Vision Pro, I defined the project scope, structured the product backlog, and established the development roadmap internally.
+              The NHL was Immersiv.io's largest client, and my mandate was to renew and grow the relationship. I owned the stakeholder relationship directly — weekly C-level meetings with the NHL's Director of Innovation, Director of Data, and coaching leads, plus daily Slack contact to flag data issues, route them to the right people, and present UX decisions with clear options for evaluation.
             </p>
             <p>
-              Through weekly C-level meetings with NHL leadership, I provided clear progress updates, addressed risks, and aligned stakeholders on next steps — directly contributing to the successful renewal and expansion of the partnership: $1.4M over two NHL seasons.
+              Internally, I defined scope, structured the product backlog, and owned the roadmap. Every decision discussed informally on Slack was formalized at the next weekly — keeping alignment tight and documentation consistent. That cadence was key to delivering the $1.4M contract renewal across two NHL seasons.
             </p>
           </div>
         </div>
@@ -203,10 +251,10 @@
           <div class="section-label">Project Overview</div>
           <div class="section-body">
             <p>
-              The NHL XR Coaching App was developed in partnership with Apple for Apple Vision Pro — delivering an immersive platform for professional hockey coaches and analysts. It enables coaching staff to review current and past season games in 3D, analyze player performance, scout recruits, and present tactical insights in a spatial environment.
+              Developed in partnership with Apple for Apple Vision Pro, the NHL XR Coaching App gives coaching staff a spatial tool to review games in 3D, analyze player performance, and present tactical insights. Within the first season, 12 teams adopted the app — with the Edmonton Oilers, the best-performing team that season, among the most engaged users.
             </p>
             <p>
-              Built in close collaboration with NHL teams working directly with coaches, the app was designed to support real-world elite workflows — combining XR technology with practical coaching needs to evaluate games, track player metrics, and support strategic decision-making.
+              The use cases that emerged told the story. Teams used the app to scout players, settle coaching disagreements, and analyze referee decisions. In one case, a coaching staff used the Player POV feature to review a goalkeeper's field of vision on a disputed play — and identified a foul they should have challenged live. That wasn't a hypothetical benefit. It was the product working exactly as intended.
             </p>
           </div>
         </div>
@@ -243,13 +291,13 @@
       <div class="content-grid">
         <div>
           <div class="section-label">My Role</div>
-          <h2 class="section-h2">NHL Mobile XR — Fan First</h2>
+          <h2 class="section-h2">Fixing What Blocked the Features — Before Fans Arrived</h2>
           <div class="section-body">
             <p>
-              I started the project with responsibility for evolving an existing mobile 3D app developed one year earlier. My primary objective was to improve the product ahead of fan testing — ensuring it was mature enough for users to evaluate core value rather than surface UX issues.
+              My goal was clear: get the app ready for fan testing without wasting it on surface-level issues. I led the kickoff, conducted a full product audit, and applied one core principle — fix what's blocking existing features, not chasing new ones. That framing shaped every prioritization decision.
             </p>
             <p>
-              I conducted a comprehensive analysis, identified key pain points, prioritized by impact and feasibility, and presented a structured improvement plan to C-level stakeholders. This established the foundation for the first development cycle and guided subsequent improvements.
+              I structured a ranked improvement plan and presented it to C-level stakeholders. The result: two fan testing sessions in the US and Canada — each 1h30 long — run by the NHL's dedicated fan research team alongside third-party specialist consultants. The product had to be good enough that testers could evaluate the concept, not fight the interface.
             </p>
           </div>
         </div>
@@ -276,6 +324,105 @@
         <video data-autoplay muted loop playsinline controls>
           <source src="../../Brand_assets/My current portfolio/NHL Page/NHL Mobile app vid pres.mp4" type="video/mp4" />
         </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Decisions -->
+  <div class="project-section">
+    <div class="container">
+      <div class="section-label">Product Decisions</div>
+      <h2 class="section-h2">How I Shaped the Product</h2>
+      <div class="decision-cards" style="margin-top:32px;">
+
+        <div class="decision-card reveal">
+          <div class="decision-card-header">
+            <span class="decision-card-num">01</span>
+            <span class="decision-card-title">Solving Motion Sickness Without Losing Coaching Value</span>
+          </div>
+          <div class="decision-cols">
+            <div class="decision-col">
+              <div class="decision-col-label">Challenge</div>
+              <p>Pure first-person POV caused motion sickness on the headset — camera tracking felt too fast. But coaches needed to see exactly what a player sees to analyse field of vision and on-ice decision-making.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Decision</div>
+              <p>I pushed for a hybrid: third-person by default so coaches watch the play develop without nausea. When they pause, it switches to first-person — showing the exact player perspective at that moment.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Outcome</div>
+              <p>Coaches got both — full play context and precise POV analysis. Teams used it for scouting, settling coaching disputes, and in one case identified a foul they should have challenged live.</p>
+              <span class="decision-result-tag">Real-world use by coaching staff in first season</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card reveal reveal-delay-1">
+          <div class="decision-card-header">
+            <span class="decision-card-num">02</span>
+            <span class="decision-card-title">Keeping the Timeline on One Screen</span>
+          </div>
+          <div class="decision-cols">
+            <div class="decision-col">
+              <div class="decision-col-label">Challenge</div>
+              <p>The original timeline was so cluttered it effectively blocked the feature. The proposed fix was a separate screen — cleaner, but it would break context and add a navigation layer.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Decision</div>
+              <p>Keep it on one screen, reorganized by NHL periods. Replaced the multi-step period selector with left/right arrows (one tap instead of two). Removed forced reloads when switching periods so users can browse freely.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Outcome</div>
+              <p>Users could navigate the full match without losing context or disrupting playback. The feature went from effectively blocked to the core interaction of the mobile experience.</p>
+              <span class="decision-result-tag">Core UX unblocked for fan testing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card reveal reveal-delay-2">
+          <div class="decision-card-header">
+            <span class="decision-card-num">03</span>
+            <span class="decision-card-title">From 50% to 100% Player Name Visibility</span>
+          </div>
+          <div class="decision-cols">
+            <div class="decision-col">
+              <div class="decision-col-label">Challenge</div>
+              <p>When a player received the puck, their highlighted name was hidden by rink boundary rendering roughly half the time — undermining trust in the data layer for coaching use.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Decision</div>
+              <p>I pushed to prioritise this fix as part of the pre-testing audit. Fast to fix, high impact — player identification is foundational to every coaching and scouting workflow in the app.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Outcome</div>
+              <p>100% visibility after the fix. Teams used the corrected view for scouting, coaching disputes, and in one case to retroactively identify a foul that should have been challenged live.</p>
+              <span class="decision-result-tag">100% visibility — up from ~50%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card reveal reveal-delay-3">
+          <div class="decision-card-header">
+            <span class="decision-card-num">04</span>
+            <span class="decision-card-title">Fix Blockers First — Not New Features</span>
+          </div>
+          <div class="decision-cols">
+            <div class="decision-col">
+              <div class="decision-col-label">Challenge</div>
+              <p>The mobile app had existing features that didn't work properly — and there was pressure to keep adding new capabilities before the scheduled fan testing sessions.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Decision</div>
+              <p>I led the kickoff with one guiding principle: fix what blocks existing value before chasing new features. I ran a full product audit, ranked issues by impact and feasibility, and structured the first development cycle around that list.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Outcome</div>
+              <p>Two fan testing sessions — US and Canada, 1h30 each — run by NHL's specialist fan research team alongside third-party consultants. Testers evaluated the concept, not the interface.</p>
+              <span class="decision-result-tag">2 formal fan testing sessions delivered</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -333,10 +480,10 @@
   <div class="conclusion-section reveal">
     <h2>Conclusion</h2>
     <p>
-      Working across both the NHL Mobile XR experience and the Apple Vision Pro Coaching App gave me a comprehensive view of how immersive technology can serve very different audiences — fans and professional coaches — within the same ecosystem. From refining a mobile product ahead of fan testing to shaping an XR coaching tool for elite analysis, I learned to balance innovation with practicality.
+      The NHL project taught me what it means to hold both ends of the product simultaneously — a fan experience heading into real user testing, and a professional tool in daily use by coaching staff at the highest level of the sport. The constraint in both cases was the same: time is limited, so fix what blocks value first.
     </p>
     <p>
-      Managing scope, prioritization, and decision-making under business-critical constraints — directly contributing to a $1.4M contract renewal — reinforced how clarity, alignment, and measurable outcomes drive both product success and long-term client trust.
+      What I'm proud of isn't the feature list. It's the decisions that made the features usable — the hybrid POV that solved motion sickness, the timeline that stayed on one screen, the player name visible every time. And the relationship work that held it all together: a $1.4M renewal built on weekly alignment, daily responsiveness, and a product that coaches actually used.
     </p>
   </div>
 

@@ -1395,6 +1395,7 @@ footer {
   .nav-links { display: none; }
   .nav-menu-btn { display: flex; }
   .mobile-menu { display: flex; }
+  .hero-scroll { display: none; }
   .container { padding: 0 20px; }
   .hero-inner { padding: 60px 20px; }
   .projects-grid { grid-template-columns: 1fr; }
