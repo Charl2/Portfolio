@@ -8,6 +8,50 @@
   <style>
     body { opacity: 0; }
     #coverWrap { max-height: 560px; overflow: hidden; }
+    /* ── Decision Cards ── */
+    .decision-cards { display: flex; flex-direction: column; gap: 20px; }
+    .decision-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+    }
+    .decision-card-header {
+      display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px;
+    }
+    .decision-card-num {
+      font-family: var(--ff-display); font-size: 11px; font-weight: 700;
+      color: var(--blue); letter-spacing: 0.14em; flex-shrink: 0;
+    }
+    .decision-card-title {
+      font-family: var(--ff-display); font-size: 18px; font-weight: 700;
+      color: var(--ink); line-height: 1.3;
+    }
+    .decision-cols {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line); padding-top: 22px;
+    }
+    .decision-col { padding-right: 28px; }
+    .decision-col + .decision-col { padding-left: 28px; padding-right: 28px; border-left: 1px solid var(--line); }
+    .decision-col:last-child { padding-right: 0; }
+    .decision-col-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 10px;
+    }
+    .decision-col p { font-size: 14px; color: var(--ink-mid); line-height: 1.65; margin: 0; }
+    .decision-result-tag {
+      display: inline-block; margin-top: 12px; padding: 5px 13px;
+      background: rgba(0,90,255,0.08); color: var(--blue); border-radius: 100px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.03em;
+    }
+    @media (max-width: 768px) {
+      .decision-card { padding: 22px 20px; }
+      .decision-cols { grid-template-columns: 1fr; }
+      .decision-col { padding: 0 0 18px; border-left: none !important; }
+      .decision-col + .decision-col { padding-left: 0; border-top: 1px solid var(--line); padding-top: 18px; }
+      .decision-col:last-child { padding-bottom: 0; }
+    }
     @media (max-width: 768px) { #pipVideo { display: none !important; } }
     #pipVideo {
       display: none;
@@ -132,6 +176,22 @@
   </script>
 
 
+  <!-- Key numbers -->
+  <div class="project-section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;" class="reveal">
+        <div style="padding:36px;background:var(--blue);border-radius:var(--radius-lg);color:var(--white);text-align:center;">
+          <div style="font-family:var(--ff-display);font-size:52px;font-weight:900;margin-bottom:6px;line-height:1;" data-count="2" data-suffix="">2</div>
+          <div style="font-size:14px;opacity:0.8;">Live matches shipped — PSG vs. Marseille &amp; Monaco</div>
+        </div>
+        <div style="padding:36px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--line);text-align:center;">
+          <div style="font-family:var(--ff-display);font-size:52px;font-weight:900;color:var(--blue);margin-bottom:6px;line-height:1;">0</div>
+          <div style="font-size:14px;color:var(--ink-mid);">Critical failures during either live broadcast</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- My Role -->
   <div class="project-section">
     <div class="container">
@@ -141,10 +201,10 @@
           <h2 class="section-h2">Product Manager, Immersiv.io</h2>
           <div class="section-body">
             <p>
-              I joined the PSG project as Product Manager with the primary objective of delivering features within the established scope, while shaping the user experiences connected to those features. I led the ideation and design of key app surfaces — the home page, match list, and video gallery — working closely with the internal team to define concepts and present them to the client.
+              I shipped two major features on a hard deadline: a live 180° stadium view (watch the match from inside Parc des Princes) and a 3D tabletop mode. Both launched for PSG vs. Marseille on January 5th, and again for PSG vs. Monaco — both live broadcasts ran without a single critical failure. PSG promoted the app heavily on LinkedIn. It was both a PR success and a clean technical execution.
             </p>
             <p>
-              In parallel, I built a close working relationship with PSG's Digital Product and Marketing teams and the Google XR Director through weekly C-level meetings — providing progress updates, surfacing risks, and aligning on next steps. This collaboration was key to ensuring on-time delivery.
+              I ran weekly meetings with PSG's product manager and media director, and biweekly sessions with the Google Android XR lead. I brought structure to every meeting — organized slides with clear ownership tables (who does what, when, how, and why). When blockers surfaced, I translated technical issues into language C-level could act on, then followed up by email until resolved.
             </p>
           </div>
         </div>
@@ -204,6 +264,108 @@
           Watch 360° Experience on YouTube
         </a>
       </div>
+      <p style="margin-top:14px;font-size:13px;color:var(--ink-light);display:flex;align-items:center;gap:6px;">
+        <span style="font-size:15px;">💡</span> Set video quality to the highest setting — 180° videos are blurry at lower resolutions.
+      </p>
+    </div>
+  </div>
+
+  <!-- Key Decisions -->
+  <div class="project-section">
+    <div class="container">
+      <div class="section-label">Product Decisions</div>
+      <h2 class="section-h2">How I Shaped the Product</h2>
+      <div class="decision-cards" style="margin-top:32px;">
+
+        <div class="decision-card reveal">
+          <div class="decision-card-header">
+            <span class="decision-card-num">01</span>
+            <span class="decision-card-title">Putting 180° Front and Centre on the Homepage</span>
+          </div>
+          <div class="decision-cols">
+            <div class="decision-col">
+              <div class="decision-col-label">Challenge</div>
+              <p>The homepage needed to surface the right content clearly — but the app's core value proposition, the 180° stadium view, risked getting buried among highlights, stats, and other content.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Decision</div>
+              <p>I pushed for a dedicated right column exclusively for 180° content. Working closely with the designer, I advocated for a layout where the app's differentiator was immediately visible — not something users had to discover.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Outcome</div>
+              <p>The 180° feature was front and centre from day one. Fans arriving at the home page immediately saw what made the app unique, which supported both adoption and PSG's marketing positioning.</p>
+              <span class="decision-result-tag">Core differentiator made immediately visible</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card reveal reveal-delay-1">
+          <div class="decision-card-header">
+            <span class="decision-card-num">02</span>
+            <span class="decision-card-title">Redesigning the Match List Around a Licensing Problem</span>
+          </div>
+          <div class="decision-cols">
+            <div class="decision-col">
+              <div class="decision-col-label">Challenge</div>
+              <p>When we implemented SSO to protect premium full-replay rights, it had an unintended side effect: free users lost access to highlights and stats — content that should have been freely available to everyone.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Decision</div>
+              <p>I redesigned the entire match list user flow to cleanly separate free and premium content. Free users retained access to highlights and stats; premium users unlocked full replays. This required both UX work and stakeholder alignment with PSG.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Outcome</div>
+              <p>A licensing constraint that could have degraded the free experience was turned into a clear, functional tiering model — protecting both user trust and content rights.</p>
+              <span class="decision-result-tag">Free experience preserved without compromising rights</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card reveal reveal-delay-2">
+          <div class="decision-card-header">
+            <span class="decision-card-num">03</span>
+            <span class="decision-card-title">Cutting the Video Gallery Filters Down to What Matters</span>
+          </div>
+          <div class="decision-cols">
+            <div class="decision-col">
+              <div class="decision-col-label">Challenge</div>
+              <p>The video gallery had accumulated too many filter options. The result was cognitive overload — users faced with too many choices before they could even start browsing content.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Decision</div>
+              <p>I consolidated the filters down to the essentials: match highlights and immersive content. Everything else was noise. Fewer choices, faster access to what users actually came for.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Outcome</div>
+              <p>A simpler, faster browsing experience — and a cleaner visual presentation of PSG's content library, which supported the premium positioning of the app overall.</p>
+              <span class="decision-result-tag">Cognitive load reduced, browsing speed improved</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card reveal reveal-delay-3">
+          <div class="decision-card-header">
+            <span class="decision-card-num">04</span>
+            <span class="decision-card-title">Making the Most of XR's Visual Space</span>
+          </div>
+          <div class="decision-cols">
+            <div class="decision-col">
+              <div class="decision-col-label">Challenge</div>
+              <p>The tabletop and live views were underusing what makes XR different. Stats and lineup panels defaulted to closed — treating the headset like a phone screen, where screen real estate is scarce.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Decision</div>
+              <p>I pushed for visual stats and a momentum tracker on the timeline slider, and advocated for both lineup and stats panels to open by default. On XR, you have comfortable visual space to absorb more — keeping panels closed just adds a click with no benefit.</p>
+            </div>
+            <div class="decision-col">
+              <div class="decision-col-label">Outcome</div>
+              <p>Users land directly in an information-rich view that takes advantage of the medium. One less interaction barrier — and a live experience that feels genuinely spatial rather than a phone app on a big screen.</p>
+              <span class="decision-result-tag">Richer default view, one fewer click</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -260,10 +422,10 @@
   <div class="conclusion-section reveal">
     <h2>Conclusion</h2>
     <p>
-      Working on the PSG XR app let me combine strategic product management with immersive experience design. From defining the home page, match list, and video gallery to ensuring seamless delivery of live and replay experiences across 2D, 3D tabletop, and 180° formats, I gained hands-on experience bridging UX vision with technical execution.
+      The PSG project was about execution under real stakes — live matches, real fans, a Google partnership, and no room for bugs. Shipping 180° live stadium view and tabletop mode for PSG vs. Marseille and PSG vs. Monaco without a critical failure on either broadcast wasn't just a technical milestone. It was proof that the right PM focus — unblocking, aligning, and pushing for the right decisions — is what separates a good product from one that works when it matters.
     </p>
     <p>
-      Collaborating with PSG's Digital Product team and Google XR stakeholders reinforced the importance of aligning high-level stakeholders while managing scope and priorities — and demonstrated how XR can create entirely new ways to experience live sports.
+      What I'm most proud of is the problems that didn't make it to launch day. The licensing issue that could have broken the free experience. The filters that would have slowed everyone down. The blockers that stayed stuck until I translated them clearly enough for C-level to act. Those are the decisions that don't show up in a demo — but they're what made the demo work.
     </p>
   </div>
 
