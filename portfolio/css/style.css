@@ -1397,6 +1397,9 @@ footer {
   .mobile-menu { display: flex; }
   .hero-scroll { display: none; }
   .cursor-dot, .cursor-ring { display: none; }
+  .logo-item { padding: 0 20px; }
+  .logo-item img { width: 70px; height: 28px; }
+  .logo-item svg { height: 20px; }
   .container { padding: 0 20px; }
   .hero-inner { padding: 60px 20px; }
   .projects-grid { grid-template-columns: 1fr; }
