@@ -601,7 +601,7 @@ body.cursor-hidden .cursor-ring { opacity: 0; }
 
 /* ── Quote / About ───────────────────────── */
 .about-section {
-  padding: 80px 0 40px;
+  padding: 80px 0;
 }
 
 /* Pull quote */
@@ -715,7 +715,7 @@ body.cursor-hidden .cursor-ring { opacity: 0; }
 
 /* ── Projects Grid ───────────────────────── */
 .projects-section {
-  padding: 100px 0;
+  padding: 80px 0;
 }
 .projects-grid {
   display: grid;
@@ -845,7 +845,7 @@ body.cursor-hidden .cursor-ring { opacity: 0; }
 
 /* ── Contact ─────────────────────────────── */
 .contact-section {
-  padding: 120px 0 80px;
+  padding: 80px 0;
   text-align: center;
 }
 .contact-section h2 {
@@ -1397,9 +1397,9 @@ footer {
   .mobile-menu { display: flex; }
   .hero-scroll { display: none; }
   .cursor-dot, .cursor-ring { display: none; }
-  .logo-item { padding: 0 20px; }
-  .logo-item img { width: 70px; height: 28px; }
-  .logo-item svg { height: 20px; }
+  .logo-item { padding: 0 10px; height: 44px; }
+  .logo-item img { width: 48px; height: 22px; }
+  .logo-item svg { height: 16px; }
   .container { padding: 0 20px; }
   .hero-inner { padding: 60px 20px; }
   .projects-grid { grid-template-columns: 1fr; }
@@ -1409,8 +1409,14 @@ footer {
   .stat-box:last-child { border-bottom: none; }
   .linkedin-links { grid-template-columns: 1fr; }
   .experience-grid.four-cols { grid-template-columns: repeat(2, 1fr); }
-  .conclusion-section { margin: 40px 20px; padding: 60px 24px; }
+  .conclusion-section { margin: 40px 20px; padding: 48px 24px; }
   .next-project { padding: 40px 20px; }
+  .project-section { padding: 48px 0; }
+  .projects-section { padding: 56px 0; }
+  .about-section { padding: 48px 0; }
+  .featured-clients { padding: 40px 0 32px; }
+  .contact-section { padding: 64px 0 48px; }
+  .logo-strip { padding: 16px 0; }
   .try-widget { bottom: 20px; right: 20px; }
   footer { flex-direction: column; gap: 12px; text-align: center; }
 }
