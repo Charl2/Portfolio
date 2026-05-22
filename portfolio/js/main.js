@@ -27,7 +27,7 @@
   animateRing();
 
   // Hover states
-  const hoverTargets = 'a, button, .project-card, .deliverable-item, .linkedin-link-card, .nav-cta, .try-widget-btn';
+  const hoverTargets = 'a, button, .project-card, .deliverable-item, .linkedin-link-card, .nav-cta, .try-widget-btn, .carousel-btn';
   document.querySelectorAll(hoverTargets).forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
@@ -212,6 +212,55 @@
   }, { threshold: 0.5 });
 
   els.forEach(el => observer.observe(el));
+})();
+
+/* ── Carousels ───────────────────────────── */
+(function initCarousels() {
+  document.querySelectorAll('.projects-carousel').forEach(carousel => {
+    const track    = carousel.querySelector('.carousel-track');
+    const container = carousel.parentElement;
+    const prevBtn  = container.querySelector('.carousel-prev');
+    const nextBtn  = container.querySelector('.carousel-next');
+    if (!track) return;
+
+    const getStep = () => {
+      const card = track.querySelector('.project-card');
+      return card ? card.offsetWidth + 20 : 360;
+    };
+
+    prevBtn?.addEventListener('click', () => track.scrollBy({ left: -getStep(), behavior: 'smooth' }));
+    nextBtn?.addEventListener('click', () => track.scrollBy({ left:  getStep(), behavior: 'smooth' }));
+
+    const updateBtns = () => {
+      if (prevBtn) prevBtn.disabled = track.scrollLeft <= 0;
+      if (nextBtn) nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+    };
+    track.addEventListener('scroll', updateBtns, { passive: true });
+    updateBtns();
+
+    let startX = 0, startScroll = 0, isDragging = false, hasDragged = false;
+
+    track.addEventListener('mousedown', e => {
+      isDragging  = true;
+      hasDragged  = false;
+      startX      = e.pageX;
+      startScroll = track.scrollLeft;
+      track.classList.add('is-dragging');
+    });
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      const dx = e.pageX - startX;
+      if (Math.abs(dx) > 4) hasDragged = true;
+      track.scrollLeft = startScroll - dx;
+    });
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      track.classList.remove('is-dragging');
+    });
+    track.addEventListener('click', e => {
+      if (hasDragged) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+  });
 })();
 
 /* Entry animation */

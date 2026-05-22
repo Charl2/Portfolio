@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PSG XR — Charles Taylor</title>
+  <title>PSG XR · Charles Taylor</title>
   <link rel="stylesheet" href="../css/style.css" />
   <style>
     body { opacity: 0; }
@@ -16,6 +16,26 @@
       border-left: 4px solid var(--blue);
       border-radius: var(--radius-lg);
       padding: 32px 36px;
+      cursor: default;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .decision-card:hover {
+      border-left-color: var(--blue);
+      box-shadow: 0 4px 24px rgba(21,87,176,0.10);
+    }
+    .card-screen {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s ease, margin-top 0.3s ease;
+      margin-top: 0;
+    }
+    .decision-card:hover .card-screen {
+      max-height: 900px;
+      margin-top: 28px;
+    }
+    .card-screen img {
+      width: 82%; height: auto; display: block; margin: 0;
+      border-radius: var(--radius); border: 1px solid var(--line);
     }
     .decision-card-header {
       display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px;
@@ -98,7 +118,6 @@
     <div class="nav-links">
       <a href="../index.html#xr-projects" class="nav-link active">3D / XR</a>
       <a href="../index.html#ux-projects" class="nav-link">UX / UI</a>
-      <a href="../index.html#automation" class="nav-link">Automation</a>
       <a href="../index.html#contact" class="nav-cta">Let's Connect ↗</a>
     </div>
     <button class="nav-menu-btn" aria-label="Open menu"><span></span><span></span></button>
@@ -106,7 +125,6 @@
   <div class="mobile-menu">
     <a href="../index.html#xr-projects">3D / XR</a>
     <a href="../index.html#ux-projects">UX / UI</a>
-    <a href="../index.html#automation">Automation</a>
     <a href="../index.html#contact">Let's Connect</a>
   </div>
 
@@ -122,12 +140,12 @@
         <span class="meta-tag">Immersiv.io</span>
         <span class="meta-tag">PSG · Google · Samsung</span>
       </div>
-      <h1 class="project-title">PSG XR —<br/><em>A New Way of Watching</em><br/>&amp; Experiencing Football</h1>
+      <h1 class="project-title">PSG XR:<br/><em>A New Way of Watching</em><br/>&amp; Experiencing Football</h1>
       <p class="project-intro">
-        An Android XR app funded by Google for the launch of the Android XR headset — redefining how PSG fans follow matches through live 2D, 3D tabletop and immersive 180° stadium experiences.
+        An Android XR app funded by Google for the launch of the Android XR headset, redefining how PSG fans follow matches through live 2D, 3D tabletop and immersive 180° stadium experiences.
       </p>
       <div class="project-hero-details reveal">
-        <div class="detail-item"><span class="detail-label">Available on</span><span class="detail-value">Android XR — PSG Immersion App</span></div>
+        <div class="detail-item"><span class="detail-label">Available on</span><span class="detail-value">Android XR: PSG Immersion App</span></div>
         <div class="detail-item"><span class="detail-label">Role</span><span class="detail-value">Product Manager</span></div>
         <div class="detail-item"><span class="detail-label">Client</span><span class="detail-value">PSG &amp; Google</span></div>
       </div>
@@ -160,11 +178,13 @@
       window.addEventListener('scroll', function() {
         if (window._pipDismissed) return;
         var walkthrough = document.getElementById('walkthroughVid');
+        var uxSection = document.getElementById('uxDecisions');
         var coverBottom = coverWrap.getBoundingClientRect().bottom;
         var walkthroughTop = walkthrough ? walkthrough.getBoundingClientRect().top : 999999;
+        var uxTop = uxSection ? uxSection.getBoundingClientRect().top : 999999;
         var coverHeight = coverWrap.offsetHeight;
         var walkthroughHeight = walkthrough ? walkthrough.offsetHeight : 0;
-        var show = coverBottom < coverHeight * 0.5 && coverBottom < coverHeight && walkthroughTop > window.innerHeight - walkthroughHeight * 0.5;
+        var show = coverBottom < coverHeight * 0.5 && coverBottom < coverHeight && walkthroughTop > window.innerHeight - walkthroughHeight * 0.5 && uxTop > window.innerHeight * 0.6;
         if (show && pipVideo.style.display !== 'block') {
           pipVideo.style.display = 'block';
           pipVid.play().catch(function(){});
@@ -182,7 +202,7 @@
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;" class="reveal">
         <div style="padding:36px;background:var(--blue);border-radius:var(--radius-lg);color:var(--white);text-align:center;">
           <div style="font-family:var(--ff-display);font-size:52px;font-weight:900;margin-bottom:6px;line-height:1;" data-count="2" data-suffix="">2</div>
-          <div style="font-size:14px;opacity:0.8;">Live matches shipped — PSG vs. Marseille &amp; Monaco</div>
+          <div style="font-size:14px;opacity:0.8;">Live matches shipped: PSG vs. Marseille &amp; Monaco</div>
         </div>
         <div style="padding:36px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--line);text-align:center;">
           <div style="font-family:var(--ff-display);font-size:52px;font-weight:900;color:var(--blue);margin-bottom:6px;line-height:1;">0</div>
@@ -201,10 +221,10 @@
           <h2 class="section-h2">Product Manager, Immersiv.io</h2>
           <div class="section-body">
             <p>
-              I shipped two major features on a hard deadline: a live 180° stadium view (watch the match from inside Parc des Princes) and a 3D tabletop mode. Both launched for PSG vs. Marseille on January 5th, and again for PSG vs. Monaco — both live broadcasts ran without a single critical failure. PSG promoted the app heavily on LinkedIn. It was both a PR success and a clean technical execution.
+              I shipped two major features on a hard deadline: a live 180° stadium view (watch the match from inside Parc des Princes) and a 3D tabletop mode. Both launched for PSG vs. Marseille on January 5th, and again for PSG vs. Monaco. Both live broadcasts ran without a single critical failure. PSG promoted the app heavily on LinkedIn. It was both a PR success and a clean technical execution.
             </p>
             <p>
-              I ran weekly meetings with PSG's product manager and media director, and biweekly sessions with the Google Android XR lead. I brought structure to every meeting — organized slides with clear ownership tables (who does what, when, how, and why). When blockers surfaced, I translated technical issues into language C-level could act on, then followed up by email until resolved.
+              I ran weekly meetings with PSG's product manager and media director, and biweekly sessions with the Google Android XR lead. I brought structure to every meeting: organized slides with clear ownership tables (who does what, when, how, and why). When blockers surfaced, I translated technical issues into language C-level could act on, then followed up by email until resolved.
             </p>
           </div>
         </div>
@@ -225,10 +245,10 @@
       <h2 class="section-h2">Redefining How Matches Are Followed</h2>
       <div class="section-body" style="max-width:700px;">
         <p>
-          The PSG XR app was funded by Google to support the launch of the Android XR headset in the US and South Korea, developed in collaboration with Samsung on the hardware side. From the home page, fans access live matches and replays in both 2D and 180°, match highlights, and exclusive premium content via a MyParis Premium account — enhanced with real-time stats and a 3D tabletop view.
+          The PSG XR app was funded by Google to support the launch of the Android XR headset in the US and South Korea, developed in collaboration with Samsung on the hardware side. From the home page, fans access live matches and replays in both 2D and 180°, match highlights, and exclusive premium content via a MyParis Premium account, enhanced with real-time stats and a 3D tabletop view.
         </p>
         <p>
-          The key differentiator is the 180° live and replay viewing mode. With five cameras installed inside Parc des Princes, users watch matches from within the stadium — with automatic camera switching and spatial audio designed to capture the energy of a live PSG match.
+          The key differentiator is the 180° live and replay viewing mode. With five cameras installed inside Parc des Princes, users watch matches from within the stadium, with automatic camera switching and spatial audio designed to capture the energy of a live PSG match.
         </p>
       </div>
     </div>
@@ -251,7 +271,7 @@
   <div class="project-section">
     <div class="container">
       <div class="section-label">Try the Experience</div>
-      <h2 class="section-h2">360° Immersive Football — Try it yourself</h2>
+      <h2 class="section-h2">360° Immersive Football: Try it yourself</h2>
       <p class="section-body" style="margin-bottom:32px;">
         Use your mouse or device gyroscope to look around in all directions and feel what the 180° experience is like.
       </p>
@@ -265,156 +285,118 @@
         </a>
       </div>
       <p style="margin-top:14px;font-size:13px;color:var(--ink-light);display:flex;align-items:center;gap:6px;">
-        <span style="font-size:15px;">💡</span> Set video quality to the highest setting — 180° videos are blurry at lower resolutions.
+        <span style="font-size:15px;">💡</span> Set video quality to the highest setting. 180° videos are blurry at lower resolutions.
       </p>
     </div>
   </div>
 
-  <!-- Key Decisions -->
-  <div class="project-section">
+  <!-- Product Decisions -->
+  <div id="uxDecisions" class="project-section">
     <div class="container">
       <div class="section-label">Product Decisions</div>
-      <h2 class="section-h2">How I Shaped the Product</h2>
+      <h2 class="section-h2">Four Screens, Four Key Choices</h2>
       <div class="decision-cards" style="margin-top:32px;">
 
         <div class="decision-card reveal">
           <div class="decision-card-header">
-            <span class="decision-card-num">01</span>
-            <span class="decision-card-title">Putting 180° Front and Centre on the Homepage</span>
+            <span class="decision-card-num">01 · Homepage</span>
+            <span class="decision-card-title">Putting 180° Front and Centre</span>
           </div>
           <div class="decision-cols">
             <div class="decision-col">
               <div class="decision-col-label">Challenge</div>
-              <p>The homepage needed to surface the right content clearly — but the app's core value proposition, the 180° stadium view, risked getting buried among highlights, stats, and other content.</p>
+              <p>The homepage needed to surface the right content clearly, but the app's core value, the 180° stadium view, risked getting buried among highlights, stats, and other content.</p>
             </div>
             <div class="decision-col">
               <div class="decision-col-label">Decision</div>
-              <p>I pushed for a dedicated right column exclusively for 180° content. Working closely with the designer, I advocated for a layout where the app's differentiator was immediately visible — not something users had to discover.</p>
+              <p>I pushed for a dedicated right column exclusively for 180° content. The app's differentiator had to be immediately visible, not something users had to discover.</p>
             </div>
             <div class="decision-col">
               <div class="decision-col-label">Outcome</div>
-              <p>The 180° feature was front and centre from day one. Fans arriving at the home page immediately saw what made the app unique, which supported both adoption and PSG's marketing positioning.</p>
+              <p>Fans arriving at the home page immediately saw what made the app unique, supporting both adoption and PSG's marketing positioning.</p>
               <span class="decision-result-tag">Core differentiator made immediately visible</span>
             </div>
+          </div>
+          <div class="card-screen">
+            <img src="../../Brand_assets/My current portfolio/PSG XR Page/Experience overview 1st Pic PSG XR.avif" alt="Homepage screen" loading="lazy" />
           </div>
         </div>
 
         <div class="decision-card reveal reveal-delay-1">
           <div class="decision-card-header">
-            <span class="decision-card-num">02</span>
-            <span class="decision-card-title">Redesigning the Match List Around a Licensing Problem</span>
+            <span class="decision-card-num">02 · Match List</span>
+            <span class="decision-card-title">Redesigning Around a Licensing Problem</span>
           </div>
           <div class="decision-cols">
             <div class="decision-col">
               <div class="decision-col-label">Challenge</div>
-              <p>When we implemented SSO to protect premium full-replay rights, it had an unintended side effect: free users lost access to highlights and stats — content that should have been freely available to everyone.</p>
+              <p>When we implemented SSO to protect premium full-replay rights, free users lost access to highlights and stats. Content that should have been freely available to everyone.</p>
             </div>
             <div class="decision-col">
               <div class="decision-col-label">Decision</div>
-              <p>I redesigned the entire match list user flow to cleanly separate free and premium content. Free users retained access to highlights and stats; premium users unlocked full replays. This required both UX work and stakeholder alignment with PSG.</p>
+              <p>I redesigned the entire match list user flow to cleanly separate free and premium content, retaining highlights and stats for free users while unlocking full replays for premium.</p>
             </div>
             <div class="decision-col">
               <div class="decision-col-label">Outcome</div>
-              <p>A licensing constraint that could have degraded the free experience was turned into a clear, functional tiering model — protecting both user trust and content rights.</p>
+              <p>A licensing constraint became a clear tiering model, protecting both user trust and content rights.</p>
               <span class="decision-result-tag">Free experience preserved without compromising rights</span>
             </div>
+          </div>
+          <div class="card-screen">
+            <img src="../../Brand_assets/My current portfolio/PSG XR Page/Experience overview 2nd Pic PSG XR.avif" alt="Match List screen" loading="lazy" />
           </div>
         </div>
 
         <div class="decision-card reveal reveal-delay-2">
           <div class="decision-card-header">
-            <span class="decision-card-num">03</span>
-            <span class="decision-card-title">Cutting the Video Gallery Filters Down to What Matters</span>
+            <span class="decision-card-num">03 · Video Gallery</span>
+            <span class="decision-card-title">Cutting the Filters Down to What Matters</span>
           </div>
           <div class="decision-cols">
             <div class="decision-col">
               <div class="decision-col-label">Challenge</div>
-              <p>The video gallery had accumulated too many filter options. The result was cognitive overload — users faced with too many choices before they could even start browsing content.</p>
+              <p>The video gallery had accumulated too many filter options. Users faced cognitive overload before they could even start browsing content.</p>
             </div>
             <div class="decision-col">
               <div class="decision-col-label">Decision</div>
-              <p>I consolidated the filters down to the essentials: match highlights and immersive content. Everything else was noise. Fewer choices, faster access to what users actually came for.</p>
+              <p>I consolidated filters to the essentials: match highlights and immersive content. Fewer choices, faster access to what users actually came for.</p>
             </div>
             <div class="decision-col">
               <div class="decision-col-label">Outcome</div>
-              <p>A simpler, faster browsing experience — and a cleaner visual presentation of PSG's content library, which supported the premium positioning of the app overall.</p>
+              <p>A simpler, faster browsing experience and a cleaner visual presentation of PSG's content library.</p>
               <span class="decision-result-tag">Cognitive load reduced, browsing speed improved</span>
             </div>
+          </div>
+          <div class="card-screen">
+            <img src="../../Brand_assets/My current portfolio/PSG XR Page/Experience overview 3rd Pic PSG XR.webp" alt="Video Gallery screen" loading="lazy" />
           </div>
         </div>
 
         <div class="decision-card reveal reveal-delay-3">
           <div class="decision-card-header">
-            <span class="decision-card-num">04</span>
+            <span class="decision-card-num">04 · Live Match</span>
             <span class="decision-card-title">Making the Most of XR's Visual Space</span>
           </div>
           <div class="decision-cols">
             <div class="decision-col">
               <div class="decision-col-label">Challenge</div>
-              <p>The tabletop and live views were underusing what makes XR different. Stats and lineup panels defaulted to closed — treating the headset like a phone screen, where screen real estate is scarce.</p>
+              <p>The tabletop and live views were underusing what makes XR different. Stats and lineup panels defaulted to closed, treating the headset like a phone screen.</p>
             </div>
             <div class="decision-col">
               <div class="decision-col-label">Decision</div>
-              <p>I pushed for visual stats and a momentum tracker on the timeline slider, and advocated for both lineup and stats panels to open by default. On XR, you have comfortable visual space to absorb more — keeping panels closed just adds a click with no benefit.</p>
+              <p>I pushed for visual stats and a momentum tracker on the timeline slider, and advocated for lineup and stats panels to open by default. On XR, you have visual space to absorb more.</p>
             </div>
             <div class="decision-col">
               <div class="decision-col-label">Outcome</div>
-              <p>Users land directly in an information-rich view that takes advantage of the medium. One less interaction barrier — and a live experience that feels genuinely spatial rather than a phone app on a big screen.</p>
+              <p>Users land in an information-rich view that takes advantage of the medium. One fewer interaction barrier, a live experience that feels genuinely spatial.</p>
               <span class="decision-result-tag">Richer default view, one fewer click</span>
             </div>
           </div>
+          <div class="card-screen">
+            <img src="../../Brand_assets/My current portfolio/PSG XR Page/Experience overview 4th Pic PSG XR.webp" alt="Live Match screen" loading="lazy" />
+          </div>
         </div>
 
-      </div>
-    </div>
-  </div>
-
-  <!-- Experience overview -->
-  <div class="project-section">
-    <div class="container">
-      <div class="section-label">Experience Overview</div>
-      <h2 class="section-h2">Four Surfaces, One App</h2>
-      <div class="deliverables-list reveal" style="margin-top:28px;">
-        <div class="deliverable-item">
-          <div class="deliverable-icon">🏠</div>
-          <div class="deliverable-text">
-            <strong>A Home Page Guiding the Experience</strong>
-            <span>The left panel adapts to match status — live match, full replay, pre-match teaser or upcoming fixture. The centre highlights the latest videos; the right panel surfaces exclusive 180° content for immediate access.</span>
-          </div>
-          <div class="deliverable-preview">
-            <img src="../../Brand_assets/My current portfolio/PSG XR Page/Experience overview 1st Pic PSG XR.avif" alt="PSG Home Page" loading="lazy" />
-          </div>
-        </div>
-        <div class="deliverable-item">
-          <div class="deliverable-icon">📅</div>
-          <div class="deliverable-text">
-            <strong>Match List to Track the Team's Progress</strong>
-            <span>Fans browse PSG's full season calendar, review past scores and stats, and access replays in 2D, 3D tabletop, or immersive 180° — revisiting matches at their own pace.</span>
-          </div>
-          <div class="deliverable-preview">
-            <img src="../../Brand_assets/My current portfolio/PSG XR Page/Experience overview 2nd Pic PSG XR.avif" alt="PSG Match List" loading="lazy" />
-          </div>
-        </div>
-        <div class="deliverable-item">
-          <div class="deliverable-icon">🎬</div>
-          <div class="deliverable-text">
-            <strong>Access to Exclusive PSG Content</strong>
-            <span>The video gallery centralises all PSG content across current and past seasons. Users filter by match, season, or format — surfacing 180° highlights, full replays, and premium content.</span>
-          </div>
-          <div class="deliverable-preview">
-            <img src="../../Brand_assets/My current portfolio/PSG XR Page/Experience overview 3rd Pic PSG XR.webp" alt="PSG Video Gallery" loading="lazy" />
-          </div>
-        </div>
-        <div class="deliverable-item">
-          <div class="deliverable-icon">📡</div>
-          <div class="deliverable-text">
-            <strong>A New Way of Broadcasting Football</strong>
-            <span>Five cameras inside Parc des Princes, automatic switching, and spatial audio bring fans closer to the action — combining 2D, 3D tabletop, and 180° stadium experiences in one app.</span>
-          </div>
-          <div class="deliverable-preview">
-            <img src="../../Brand_assets/My current portfolio/PSG XR Page/Experience overview 4th Pic PSG XR.webp" alt="PSG Broadcasting" loading="lazy" />
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -422,15 +404,15 @@
   <div class="conclusion-section reveal">
     <h2>Conclusion</h2>
     <p>
-      The PSG project was about execution under real stakes — live matches, real fans, a Google partnership, and no room for bugs. Shipping 180° live stadium view and tabletop mode for PSG vs. Marseille and PSG vs. Monaco without a critical failure on either broadcast wasn't just a technical milestone. It was proof that the right PM focus — unblocking, aligning, and pushing for the right decisions — is what separates a good product from one that works when it matters.
+      The PSG project was about execution under real stakes: live matches, real fans, a Google partnership, and no room for bugs. Shipping 180° live stadium view and tabletop mode for PSG vs. Marseille and PSG vs. Monaco without a critical failure on either broadcast wasn't just a technical milestone. It was proof that the right PM focus, unblocking, aligning, and pushing for the right decisions, is what separates a good product from one that works when it matters.
     </p>
     <p>
-      What I'm most proud of is the problems that didn't make it to launch day. The licensing issue that could have broken the free experience. The filters that would have slowed everyone down. The blockers that stayed stuck until I translated them clearly enough for C-level to act. Those are the decisions that don't show up in a demo — but they're what made the demo work.
+      What I'm most proud of is the problems that didn't make it to launch day. The licensing issue that could have broken the free experience. The filters that would have slowed everyone down. The blockers that stayed stuck until I translated them clearly enough for C-level to act. Those are the decisions that don't show up in a demo, but they're what made the demo work.
     </p>
   </div>
 
   <a href="nhl.html" class="next-project">
-    <div><div class="next-label">Next Project</div><div class="next-title">NHL — Rediscovered in 3D</div></div>
+    <div><div class="next-label">Next Project</div><div class="next-title">NHL: Rediscovered in 3D</div></div>
     <div class="next-arrow">→</div>
   </a>
 

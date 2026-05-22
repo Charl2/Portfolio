@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rhino3D · Computer-Aided Design · Charles Taylor</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <noscript><style>body { opacity: 1 !important; }</style></noscript>
+  <style>
+    body { opacity: 0; }
+
+    /* Digital → Physical caption pair */
+    .cad-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .cad-pair-item { display: flex; flex-direction: column; gap: 10px; }
+    .cad-pair-label {
+      font-family: var(--ff-display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+    .cad-pair-label.blue { color: var(--blue); }
+    @media (max-width: 640px) { .cad-pair { grid-template-columns: 1fr; } }
+
+    /* Override grid items for 3D renders: contain, no crop */
+    .cad-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .cad-grid.three { grid-template-columns: repeat(3, 1fr); }
+    .cad-grid-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.3s;
+    }
+    .cad-grid-item:hover { box-shadow: var(--shadow-hover); }
+    .cad-grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 20px;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: block;
+    }
+    .cad-grid-item:hover img { transform: scale(1.03); }
+
+    /* Override media-block for CAD renders */
+    .cad-media {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+    }
+    .cad-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 32px;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .cad-grid.three { grid-template-columns: 1fr 1fr; }
+      .cad-media { min-height: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">CHARLES TAYLOR</a>
+    <div class="nav-links">
+      <a href="../index.html#xr-projects" class="nav-link">3D / XR</a>
+      <a href="../index.html#ux-projects" class="nav-link">UX / UI</a>
+      <a href="../index.html#contact" class="nav-cta">Let's Connect ↗</a>
+    </div>
+    <button class="nav-menu-btn" aria-label="Open menu"><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu">
+    <a href="../index.html#xr-projects">3D / XR</a>
+    <a href="../index.html#ux-projects">UX / UI</a>
+    <a href="../index.html#contact">Let's Connect</a>
+  </div>
+
+  <!-- ══ HERO ══════════════════════════════ -->
+  <div class="project-hero">
+    <div class="container">
+      <a href="../index.html" class="breadcrumb">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        All Projects
+      </a>
+      <div class="project-hero-meta">
+        <span class="meta-tag blue">CAD</span>
+        <span class="meta-tag blue">Product Design</span>
+        <span class="meta-tag">Rhino3D</span>
+        <span class="meta-tag">ECE Paris</span>
+      </div>
+      <h1 class="project-title">Rhino3D<br/><em>Computer-Aided</em><br/>Design</h1>
+      <p class="project-intro">
+        3D modeling projects from my semester abroad at UDLAP, Mexico. New software, courses taught entirely in Spanish, a complete shift from the CAD background I built at ECE Paris. I excelled nonetheless, and two of these models went to physical production.
+      </p>
+      <div class="project-hero-details reveal">
+        <div class="detail-item"><span class="detail-label">Software</span><span class="detail-value">Rhino3D</span></div>
+        <div class="detail-item"><span class="detail-label">Institution</span><span class="detail-value">UDLAP, Mexico · Semester Abroad</span></div>
+        <div class="detail-item"><span class="detail-label">Language</span><span class="detail-value">Courses in Spanish</span></div>
+        <div class="detail-item"><span class="detail-label">Output</span><span class="detail-value">4 projects · 3D printed skull & chair</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CONTEXT ════════════════════════════ -->
+  <div class="project-section">
+    <div class="container">
+      <div class="content-grid">
+        <div>
+          <span class="section-label">Context</span>
+          <h2 class="section-h2">From ECE Paris to Mexico: Two CAD Environments</h2>
+          <div class="section-body">
+            <p>My first exposure to 3D CAD came at ECE Paris, where I worked on hardware-adjacent projects including a connected health-tracking armband: modeling the enclosure, integrating electronics, and designing the physical form around sensor and battery constraints. No images from that phase, but it built the foundational thinking.</p>
+            <p>The work shown here comes from my semester abroad at UDLAP in Mexico, where I enrolled in a Rhino3D course taught entirely in Spanish. Rhino was new to me at the time. The curriculum covered form exploration, reverse engineering, additive manufacturing constraints, and technical precision modeling. Two of the final models were physically produced.</p>
+          </div>
+        </div>
+        <div class="cad-media reveal">
+          <img src="../../Brand_assets/My current portfolio/3D Design CAD/Chair 3D Design 1.webp" alt="Chair design overview" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CHAIR DESIGNS ══════════════════════ -->
+  <div class="project-section">
+    <div class="container">
+      <span class="section-label">01 / Seating Design</span>
+      <h2 class="section-h2">Form, structure and ergonomics</h2>
+      <div class="section-body" style="max-width:680px;margin-bottom:32px;">
+        <p>Three chair designs produced through iterative modeling, each exploring a different structural approach and seating geometry. The exercise focused on translating form intent into clean NURBS surfaces, handling compound curves, leg joinery, and seat-to-back transitions in Rhino3D.</p>
+        <p>One of these designs was taken all the way to physical production: 3D printed at <strong>hand scale</strong>, a miniature model of the chair.</p>
+      </div>
+      <div class="cad-grid three">
+        <div class="cad-grid-item reveal">
+          <img src="../../Brand_assets/My current portfolio/3D Design CAD/Chair 3D Design 1.webp" alt="Chair Design 1" loading="lazy" />
+        </div>
+        <div class="cad-grid-item reveal reveal-delay-1">
+          <img src="../../Brand_assets/My current portfolio/3D Design CAD/Chair 3D Design 2.webp" alt="Chair Design 2" loading="lazy" />
+        </div>
+        <div class="cad-grid-item reveal reveal-delay-2">
+          <img src="../../Brand_assets/My current portfolio/3D Design CAD/Chair 3D Design 3.webp" alt="Chair Design 3" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Physical print -->
+      <div class="cad-pair reveal">
+        <div class="cad-pair-item">
+          <span class="cad-pair-label">Digital Model</span>
+          <div class="cad-grid-item" style="aspect-ratio:16/10;">
+            <img src="../../Brand_assets/My current portfolio/3D Design CAD/Chair 3D Design 1.webp" alt="Chair digital model" loading="lazy" />
+          </div>
+        </div>
+        <div class="cad-pair-item">
+          <span class="cad-pair-label blue">Physical Output: 3D Printed at Hand Scale</span>
+          <div class="cad-grid-item" style="aspect-ratio:16/10;background:var(--bg);">
+            <img src="../../Brand_assets/My current portfolio/3D Design CAD/Chair printed out.jpeg" alt="Chair 3D printed at hand scale" loading="lazy" style="object-fit:contain;padding:0;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PRODUCT REPLICATIONS ══════════════ -->
+  <div class="project-section">
+    <div class="container">
+      <span class="section-label">02 / Reverse Engineering</span>
+      <h2 class="section-h2">Inferring geometry from photographic reference</h2>
+      <div class="section-body" style="max-width:680px;margin-bottom:32px;">
+        <p>Three consumer products (a floor lamp, a Coca-Cola bottle, and a rubber duck) were reconstructed from photographs alone, without access to technical drawings or physical measurements. The exercise required decomposing each object into its constituent surfaces, inferring proportions from perspective cues, and rebuilding them with accurate topology in Rhino3D.</p>
+      </div>
+      <div class="cad-grid three">
+        <div class="cad-grid-item reveal">
+          <img src="../../Brand_assets/My current portfolio/3D Design CAD/Lamp 3D Design.webp" alt="Lamp 3D Design" loading="lazy" />
+        </div>
+        <div class="cad-grid-item reveal reveal-delay-1">
+          <img src="../../Brand_assets/My current portfolio/3D Design CAD/Coca-cola 3D Design.webp" alt="Coca-Cola bottle 3D Design" loading="lazy" />
+        </div>
+        <div class="cad-grid-item reveal reveal-delay-2">
+          <img src="../../Brand_assets/My current portfolio/3D Design CAD/Duck 3D Design.webp" alt="Rubber Duck 3D Design" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SKULL DESIGN ═══════════════════════ -->
+  <div class="project-section">
+    <div class="container">
+      <span class="section-label">03 / Additive Manufacturing</span>
+      <h2 class="section-h2">Designed, printed and molded</h2>
+      <div class="section-body" style="max-width:680px;margin-bottom:40px;">
+        <p>This skull was designed for physical production from the start. The brief required satisfying FDM printing constraints: minimum wall thickness, self-supporting overhangs, and internal cavity geometry compatible with post-print molding. The digital model was sent to print, then physically molded.</p>
+        <p>Every surface decision was driven by what the printer and mold process could actually handle. Sculptural intent constrained by manufacturing reality.</p>
+      </div>
+      <div class="cad-pair reveal">
+        <div class="cad-pair-item">
+          <span class="cad-pair-label">Digital Model / Rhino3D</span>
+          <div class="cad-grid-item" style="aspect-ratio:1;">
+            <img src="../../Brand_assets/My current portfolio/3D Design CAD/Skull 3D Design.webp" alt="Skull 3D model in Rhino3D" loading="lazy" />
+          </div>
+        </div>
+        <div class="cad-pair-item">
+          <span class="cad-pair-label blue">Physical Output: 3D Printed & Molded</span>
+          <div class="cad-grid-item" style="aspect-ratio:1;background:var(--bg);">
+            <img src="../../Brand_assets/My current portfolio/3D Design CAD/Skull Printed out.jpeg" alt="Skull physically 3D printed and molded" loading="lazy" style="object-fit:cover;padding:0;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PRECISION MODELING ════════════════ -->
+  <div class="project-section">
+    <div class="container">
+      <div class="content-grid reverse">
+        <div>
+          <span class="section-label">04 / Precision Engineering</span>
+          <h2 class="section-h2">Technical recreation to engineering tolerance</h2>
+          <div class="section-body">
+            <p>The final exercise required recreating provided technical drawings at exact specifications, matching dimensions, radii, and surface continuity to engineering tolerances. This involved working with Rhino3D's constraint-driven tools, Boolean operations, and dimensionally-controlled curve networks.</p>
+            <p>The outcome demonstrated proficiency in translating 2D technical drawings into fully parametric 3D models ready for downstream manufacturing use.</p>
+          </div>
+        </div>
+        <div class="cad-media reveal">
+          <img src="../../Brand_assets/My current portfolio/3D Design CAD/Precision modelling 3D design.webp" alt="Precision Modeling, CAD technical drawing" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CONTACT ════════════════════════════ -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2 class="reveal">Let's work <em>together</em></h2>
+      <p class="reveal reveal-delay-1">Open to product, UX research and design roles. Based in Paris, available globally.</p>
+      <div class="contact-links reveal reveal-delay-2">
+        <a href="mailto:charlestaylor.pro@gmail.com" class="btn-primary">✉ charlestaylor.pro@gmail.com</a>
+        <a href="https://www.linkedin.com/in/chucktaylor2002" target="_blank" rel="noopener" class="btn-secondary">in LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-logo">CHARLES TAYLOR</span>
+    <span>UX Researcher & Product Manager · Paris, France</span>
+    <span>+33 6 58 02 58 96</span>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

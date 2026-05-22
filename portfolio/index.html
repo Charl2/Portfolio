@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Charles Taylor — UX Researcher & Product Manager</title>
+  <title>Charles Taylor · UX Researcher & Product Manager</title>
   <link rel="stylesheet" href="css/style.css" />
+  <noscript><style>body { opacity: 1 !important; }</style></noscript>
   <style>
     body { opacity: 0; }
     /* Home-specific styles */
@@ -93,7 +94,6 @@
     <div class="nav-links">
       <a href="#xr-projects"  class="nav-link">3D / XR</a>
       <a href="#ux-projects"  class="nav-link">UX / UI</a>
-      <a href="#automation"   class="nav-link">Automation</a>
       <a href="#contact"      class="nav-cta">Let's Connect ↗</a>
     </div>
     <button class="nav-menu-btn" aria-label="Open menu">
@@ -105,7 +105,6 @@
   <div class="mobile-menu" aria-hidden="true">
     <a href="#xr-projects">3D / XR</a>
     <a href="#ux-projects">UX / UI</a>
-    <a href="#automation">Automation</a>
     <a href="#contact">Let's Connect</a>
   </div>
 
@@ -149,10 +148,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
     </div>
   </section>
 
@@ -224,7 +219,7 @@
         <div class="logo-item"><img src="../Brand_assets/Logos/Us Open logo.avif" alt="US Open" /></div>
         <div class="logo-item"><img src="../Brand_assets/Logos/Le Lab TBM Mouv! Logo.avif" alt="TBM" /></div>
       </div>
-      <!-- Set 2 — duplicate for seamless loop -->
+      <!-- Set 2, duplicate for seamless loop -->
       <div class="logo-set">
         <div class="logo-item"><img src="../Brand_assets/Logos/NHL Logo.avif" alt="NHL" /></div>
         <div class="logo-item"><img src="../Brand_assets/Logos/Apple Logo.avif" alt="Apple" /></div>
@@ -250,7 +245,7 @@
   <section class="about-section">
     <div class="container">
 
-      <!-- Pull quote — full width -->
+      <!-- Pull quote, full width -->
       <div class="pull-quote reveal">
         <div class="pull-quote-bar"></div>
         <div class="pull-quote-body">
@@ -259,7 +254,7 @@
             to be an exceptionally organized, detail-oriented Product Manager.
             I would gladly work with him again."
           </p>
-          <span class="pull-quote-author">— Director of Innovation @ NHL</span>
+          <span class="pull-quote-author">/ Director of Innovation @ NHL</span>
         </div>
       </div>
 
@@ -269,7 +264,7 @@
           <div class="about-col-label">About</div>
           <h3 class="about-col-title">Engineering mind.<br/>Human-centered products.</h3>
           <p class="about-col-body">
-            I work comfortably across the full product lifecycle — from problem framing
+            I work comfortably across the full product lifecycle, from problem framing
             and UX research through to delivery and stakeholder alignment.
           </p>
           <p class="about-col-body">
@@ -295,9 +290,9 @@
         <div class="about-col reveal reveal-delay-3">
           <div class="about-col-label">Education</div>
           <div class="edu-list">
-            <div class="edu-item">ECE Paris — Master's in Engineering, Product Engineering &amp; Innovation</div>
-            <div class="edu-item">UDLAP Mexico — Innovation Management, Neural Networks, Data Viz &amp; 3D Modelling</div>
-            <div class="edu-item">Roskilde Uni Denmark — Computer Science</div>
+            <div class="edu-item">ECE Paris: Master's in Engineering, Product Engineering &amp; Innovation</div>
+            <div class="edu-item">UDLAP Mexico: Innovation Management, Neural Networks, Data Viz &amp; 3D Modelling</div>
+            <div class="edu-item">Roskilde Uni Denmark: Computer Science</div>
           </div>
         </div>
       </div>
@@ -312,11 +307,19 @@
         <span class="category-label">3D / XR</span>
         <div class="category-line"></div>
         <span style="font-size:12px;color:var(--ink-light);">Immersiv.io · 2025</span>
+        <div class="carousel-controls">
+          <button class="carousel-btn carousel-prev" aria-label="Previous projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-btn carousel-next" aria-label="Next projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
       </div>
-      <div class="projects-grid">
+      <div class="projects-carousel">
+      <div class="carousel-track">
 
-        <!-- NHL XR — large -->
-        <a href="projects/nhl.html" class="project-card card--large reveal">
+        <a href="projects/nhl.html" class="project-card">
           <div class="project-card-inner">
             <div class="pcard-img-wrap">
               <img src="../Brand_assets/My current portfolio/NHL Page/First Picture.png"
@@ -333,14 +336,13 @@
               <span class="card-category">3D / XR</span>
               <span class="card-year">2025</span>
             </div>
-            <div class="project-card-title">NHL — Rediscovered in 3D</div>
+            <div class="project-card-title">NHL: Rediscovered in 3D</div>
             <div class="project-card-role">3D/XR Product Manager · Immersiv.io</div>
             <div class="project-card-arrow">→</div>
           </div>
         </a>
 
-        <!-- PSG XR — small -->
-        <a href="projects/psg.html" class="project-card card--small reveal reveal-delay-2">
+        <a href="projects/psg.html" class="project-card">
           <div class="project-card-inner">
             <div class="pcard-img-wrap">
               <img src="../Brand_assets/My current portfolio/PSG XR Page/2nd pic PSG XR.avif"
@@ -357,14 +359,13 @@
               <span class="card-category">3D / XR</span>
               <span class="card-year">2025</span>
             </div>
-            <div class="project-card-title">PSG XR — A New Way of Watching Football</div>
+            <div class="project-card-title">PSG XR: A New Way of Watching Football</div>
             <div class="project-card-role">3D/XR Product Manager · Immersiv.io</div>
             <div class="project-card-arrow">→</div>
           </div>
         </a>
 
-        <!-- US Open — medium -->
-        <a href="projects/usopen.html" class="project-card card--medium reveal reveal-delay-1">
+        <a href="projects/usopen.html" class="project-card">
           <div class="project-card-inner">
             <div class="pcard-img-wrap">
               <img src="../Brand_assets/My current portfolio/US Open Page/US Open 1st Picture.avif"
@@ -387,8 +388,7 @@
           </div>
         </a>
 
-        <!-- Vodafone — medium -->
-        <a href="projects/vodafone.html" class="project-card card--medium reveal reveal-delay-2">
+        <a href="projects/vodafone.html" class="project-card">
           <div class="project-card-inner">
             <div class="pcard-img-wrap">
               <img src="../Brand_assets/My current portfolio/Vodafone 5G AR Stadium/Experience overview Vodafone 5G AR Stadium App 4th Square Pic and cover pic.avif"
@@ -412,6 +412,7 @@
         </a>
 
       </div>
+      </div>
     </div>
   </section>
 
@@ -422,11 +423,19 @@
         <span class="category-label">UX / UI</span>
         <div class="category-line"></div>
         <span style="font-size:12px;color:var(--ink-light);">WEEM · Renault / Software République · 2024–2025</span>
+        <div class="carousel-controls">
+          <button class="carousel-btn carousel-prev" aria-label="Previous projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-btn carousel-next" aria-label="Next projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
       </div>
-      <div class="projects-grid">
+      <div class="projects-carousel">
+      <div class="carousel-track">
 
-        <!-- V2X — large -->
-        <a href="projects/v2x.html" class="project-card card--large reveal">
+        <a href="projects/v2x.html" class="project-card">
           <div class="project-card-inner">
             <div class="pcard-img-wrap">
               <img src="../Brand_assets/My current portfolio/V2X Project Page/TBM APP integration pic.avif"
@@ -443,14 +452,13 @@
               <span class="card-category">UX Research</span>
               <span class="card-year">2025</span>
             </div>
-            <div class="project-card-title">V2X Collision Prevention — Bordeaux Metropole</div>
+            <div class="project-card-title">V2X Collision Prevention: Bordeaux Metropole</div>
             <div class="project-card-role">UX Researcher · Renault / Software République</div>
             <div class="project-card-arrow">→</div>
           </div>
         </a>
 
-        <!-- Freelance Platform — small -->
-        <a href="projects/freelance-platform.html" class="project-card card--small reveal reveal-delay-2">
+        <a href="projects/freelance-platform.html" class="project-card">
           <div class="project-card-inner">
             <div class="pcard-img-wrap">
               <img src="../Brand_assets/My current portfolio/Platform Redesign page/Freelancing Plaform Redesign 2nd pic.webp"
@@ -473,8 +481,7 @@
           </div>
         </a>
 
-        <!-- Internal Tool — medium -->
-        <a href="projects/internal-tool.html" class="project-card card--medium reveal reveal-delay-1">
+        <a href="projects/internal-tool.html" class="project-card">
           <div class="project-card-inner">
             <div class="card-solid b">AI</div>
             <div class="pcard-gradient"></div>
@@ -495,59 +502,47 @@
         </a>
 
       </div>
+      </div>
     </div>
   </section>
 
-  <!-- ══ AUTOMATION PROJECTS ════════════════ -->
-  <section id="automation" class="projects-section">
+  <!-- ══ DESIGN & PROCESS ══════════════════ -->
+  <section class="systems-section">
     <div class="container">
-      <div class="category-strip">
-        <span class="category-label">Automation</span>
-        <div class="category-line"></div>
-        <span style="font-size:12px;color:var(--ink-light);">WEEM · 2024</span>
+      <div class="systems-header reveal">
+        <span class="systems-section-label">CAD & Process Design</span>
+        <span style="font-size:12px;color:var(--ink-light);">ECE Paris · WEEM · 2023–2024</span>
       </div>
-      <div class="projects-grid">
+      <div class="systems-grid">
 
-        <!-- Automated Feedback — medium -->
-        <a href="projects/automated-feedback.html" class="project-card card--medium reveal">
-          <div class="project-card-inner">
-            <div class="card-solid d">⚡</div>
-            <div class="pcard-gradient"></div>
-            <div class="pcard-overlay-title">
-              <span>Automation · 2024</span>
-              <strong>Automated Post-Mission Feedback</strong>
-            </div>
+        <a href="projects/cad-3d.html" class="systems-card reveal">
+          <div class="systems-card-tags">
+            <span class="systems-card-tag">3D Modeling</span>
+            <span class="systems-card-stack">Rhino3D · Academic</span>
           </div>
-          <div class="project-card-body">
-            <div class="project-card-meta">
-              <span class="card-category">Automation</span>
-              <span class="card-year">2024</span>
-            </div>
-            <div class="project-card-title">Automated Post-Mission Feedback Form</div>
-            <div class="project-card-role">Process Automation · WEEM</div>
-            <div class="project-card-arrow">→</div>
-          </div>
+          <div class="systems-card-title">Product Design & 3D Modeling: CAD</div>
+          <div class="systems-card-desc">Chair design, product replication, skull modeling for 3D printing, and precision engineering recreations using Rhino3D during a final academic CAD course.</div>
+          <div class="systems-card-cta">View project →</div>
         </a>
 
-        <!-- CV Parsing — medium -->
-        <a href="projects/parsing-automation.html" class="project-card card--medium reveal reveal-delay-2">
-          <div class="project-card-inner">
-            <div class="card-solid e">AI</div>
-            <div class="pcard-gradient"></div>
-            <div class="pcard-overlay-title">
-              <span>Automation · 2024</span>
-              <strong>CV Parsing Automation System</strong>
-            </div>
+        <a href="projects/automated-feedback.html" class="systems-card reveal reveal-delay-1">
+          <div class="systems-card-tags">
+            <span class="systems-card-tag">Automation</span>
+            <span class="systems-card-stack">Zapier · HubSpot · Airtable</span>
           </div>
-          <div class="project-card-body">
-            <div class="project-card-meta">
-              <span class="card-category">Automation</span>
-              <span class="card-year">2024</span>
-            </div>
-            <div class="project-card-title">CV Parsing Automation System</div>
-            <div class="project-card-role">Process Automation · WEEM</div>
-            <div class="project-card-arrow">→</div>
+          <div class="systems-card-title">Automated Post-Mission Feedback Form</div>
+          <div class="systems-card-desc">NPS pipeline automating post-mission client communication with tokenized forms and tailored follow-up sequences.</div>
+          <div class="systems-card-cta">View project →</div>
+        </a>
+
+        <a href="projects/parsing-automation.html" class="systems-card reveal reveal-delay-2">
+          <div class="systems-card-tags">
+            <span class="systems-card-tag">Automation</span>
+            <span class="systems-card-stack">GPT-4o · Zapier · HubSpot</span>
           </div>
+          <div class="systems-card-title">CV Parsing Automation System</div>
+          <div class="systems-card-desc">AI-powered pipeline matching CVs from Google Drive with HubSpot contacts and extracting structured data via GPT prompts.</div>
+          <div class="systems-card-cta">View project →</div>
         </a>
 
       </div>

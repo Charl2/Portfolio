@@ -32,6 +32,13 @@
 
 html { scroll-behavior: smooth; font-size: 16px; }
 
+/* ── Focus Styles ─────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 body {
   background: var(--bg);
   color: var(--ink);
@@ -212,7 +219,7 @@ body.cursor-hidden .cursor-ring { opacity: 0; }
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 32px 40px 60px;
+  padding: 60px 40px 24px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
@@ -1419,6 +1426,201 @@ footer {
   .logo-strip { padding: 16px 0; }
   .try-widget { bottom: 20px; right: 20px; }
   footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* ── Carousel ────────────────────────────── */
+.projects-carousel {
+  position: relative;
+}
+.projects-carousel::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 120px;
+  background: linear-gradient(to right, transparent, var(--bg));
+  pointer-events: none;
+  z-index: 1;
+}
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: grab;
+  padding-bottom: 4px;
+  padding-right: 120px;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-track.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+.carousel-track .project-card {
+  flex: 0 0 clamp(280px, 41vw, 455px);
+  scroll-snap-align: start;
+  grid-column: unset;
+}
+.carousel-track .project-card-inner {
+  aspect-ratio: 16 / 9;
+}
+.carousel-controls {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.carousel-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1.5px solid var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  cursor: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+.carousel-btn svg { width: 15px; height: 15px; display: block; }
+.carousel-btn:hover {
+  background: var(--blue);
+  color: var(--white);
+  transform: scale(1.08);
+}
+.carousel-btn:disabled {
+  border-color: var(--line);
+  color: var(--ink-light);
+  opacity: 0.4;
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  .carousel-controls { display: none; }
+  .projects-carousel::after { display: none; }
+  .projects-carousel { margin-left: -20px; margin-right: -20px; }
+  .carousel-track {
+    padding-left: 20px;
+    padding-right: 20px;
+    scroll-padding-left: 20px;
+  }
+  .carousel-track .project-card { flex: 0 0 70vw; }
+  .category-strip { flex-wrap: wrap; row-gap: 8px; }
+  .category-strip > *:last-child { flex: 0 0 100%; }
+}
+
+/* ── Systems & Automation section ───────── */
+.systems-section {
+  padding: 40px 0 64px;
+  border-top: 1px solid var(--line);
+}
+.systems-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.systems-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+.systems-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.systems-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.systems-card:hover {
+  border-color: var(--blue-mid);
+  box-shadow: var(--shadow);
+}
+.systems-card-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.systems-card-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  background: var(--line);
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+.systems-card-stack {
+  font-size: 11px;
+  color: var(--ink-light);
+}
+.systems-card-title {
+  font-family: var(--ff-display);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.systems-card-desc {
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.5;
+}
+.systems-card-cta {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--blue);
+  margin-top: 4px;
+}
+
+/* ── Reduced Motion ──────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo-ring { animation: none; }
+  .scroll-line { animation: none; }
+  .logo-track { animation-play-state: paused; }
+
+  .hero-title .line span {
+    animation: none;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .hero-bio,
+  .hero-actions,
+  .hero-right,
+  .hero-scroll {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal {
+    transform: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .project-card:hover .pcard-img-wrap img,
+  .project-card:hover .project-card-img { transform: none; }
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .nav-cta:hover,
+  .featured-card:hover { transform: none; }
+  .next-project:hover .next-arrow { transform: none; }
+  .project-card-arrow { transition: none; }
 }
 
 /* ── Misc Utilities ──────────────────────── */
